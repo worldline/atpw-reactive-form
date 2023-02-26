@@ -9,3 +9,19 @@
     margin-bottom: 0.4em;
   }
 }
+
+input.ng-invalid.ng-dirty, select.ng-invalid.ng-dirty {
+  border-color: red;
+  color: red;
+}
+
+select.ng-invalid.ng-dirty > option {
+  color: black;
+}
+.ng-invalid.ng-dirty {
+  border: 3px solid red;
+}
+
+.ng-valid.ng-dirty {
+  border: 3px solid lightgreen;
+}
