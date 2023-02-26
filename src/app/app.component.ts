@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { NonNullableFormBuilder, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class AppComponent {
   readonly flavors = ['vanilla', 'caramel', 'chocolate']
-  readonly iceCreamForm = new FormGroup({
-    customerName: new FormControl('Charlotte Smith'),
-    flavor: new FormControl('', Validators.required),
-    toppings: new FormGroup({
-      first: new FormControl('Whipped cream'),
-      second: new FormControl('Chocolate sauce')
+  readonly iceCreamForm = this.fb.group({
+    customerName: 'Charlotte Smith',
+    flavor: ['', Validators.required],
+    toppings: this.fb.group({
+      first: 'Whipped cream',
+      second: 'Chocolate sauce'
     })
   })
+
+  constructor(
+    private fb: NonNullableFormBuilder
+  ) {}
 
   submitForm() {
     console.log('form value:', this.iceCreamForm.value)
