@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common'
-import { Component, signal } from '@angular/core'
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'
+import { Component, signal, inject } from '@angular/core'
+import { Validators, ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,15 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  private readonly fb = inject(NonNullableFormBuilder)
+
   protected readonly flavors = signal(['vanilla', 'caramel', 'chocolate'])
-  protected readonly iceCreamForm = new FormGroup({
-    customerName: new FormControl('Charlotte Smith'),
-    flavor: new FormControl('', Validators.required),
-    toppings: new FormGroup({
-      first: new FormControl('Whipped cream'),
-      second: new FormControl('Chocolate sauce')
+  protected readonly iceCreamForm = this.fb.group({
+    customerName: 'Charlotte Smith',
+    flavor: ['', Validators.required],
+    toppings: this.fb.group({
+      first: 'Whipped cream',
+      second: 'Chocolate sauce'
     })
   })
 
