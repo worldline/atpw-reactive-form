@@ -1,7 +1,7 @@
 <h1>Ice cream order</h1>
 <form (ngSubmit)="submitForm()" [formGroup]="iceCreamForm">
   <label for="customerName">Customer name:</label>
-  <input id="customerName" type="text" formControlName="customerName"/>
+  <input id="customerName" type="text" formControlName="customerName" required minlength="4"/>
 
   <label for="flavor">Flavor:</label>
   <select id="flavor" formControlName="flavor" required>
