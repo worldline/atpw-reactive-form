@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common'
-import { Component } from '@angular/core'
+import { Component, signal } from '@angular/core'
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'
 
 @Component({
@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  readonly flavors = ['vanilla', 'caramel', 'chocolate']
+  readonly flavors = signal(['vanilla', 'caramel', 'chocolate'])
   readonly iceCreamForm = new FormGroup({
     customerName: new FormControl('Charlotte Smith'),
     flavor: new FormControl('', Validators.required),

@@ -6,7 +6,7 @@
   <label for="flavor">Flavor:</label>
   <select id="flavor" formControlName="flavor" required>
     <option></option>
-    @for (flavor of flavors; track flavor) {
+    @for (flavor of flavors(); track flavor) {
     <option [value]="flavor">{{ flavor }}</option>
     }
   </select>
