@@ -9,8 +9,8 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  readonly flavors = signal(['vanilla', 'caramel', 'chocolate'])
-  readonly iceCreamForm = new FormGroup({
+  protected readonly flavors = signal(['vanilla', 'caramel', 'chocolate'])
+  protected readonly iceCreamForm = new FormGroup({
     customerName: new FormControl('Charlotte Smith'),
     flavor: new FormControl('', Validators.required),
     toppings: new FormGroup({
